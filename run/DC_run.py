@@ -1,7 +1,7 @@
 from datetime import date
 import sys
 
-sys.path.append("/opt/data/private/IVIU_Net")
+sys.path.append("XXXXXXXXXXXXXX")   # 此处输入项目根目录，本地运行可以注释掉 
 import time
 import matplotlib.pyplot as plt
 import torch
