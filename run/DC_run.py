@@ -42,32 +42,6 @@ def run(data, trainFrom):
             network='IVIU',
             ckpt='logs/IVIU_DC2_min_loss.pt',
             date_name='DC2')
-        
-    elif data == 'DC3':
-        tabu = scio.loadmat('data/DC3/DC3_128s_40dB.mat')['X0_240']
-        index = [108, 8, 182, 15, 174]
-        size = 128
-        if  trainFrom == 'train':
-            train_from=False
-            epoch = 5000            # iterations
-        else:
-            train_from='logs/IVIU_DC3_min_loss.pt'
-            epoch = 1
-        para = ParaSet(
-            data_dir="data/DC3/DC3_train_all_patch",
-            lib_path='data/Library/USGS_Lib_240.mat',
-            lib_symbol='Lib_240',
-            length=128,
-            width=128,
-            admm_layers=40,
-            train_from=train_from,
-            batch_size=1,
-            learning_rate=1e-4,
-            epoch=epoch,
-            save_dir='logs',
-            network='IVIU',
-            ckpt='logs/IVIU_DC3_final.pt',
-            date_name='DC3')
     else:
         print('data 参数设置错误！')
 
@@ -125,7 +99,7 @@ def run(data, trainFrom):
 if __name__ == '__main__':
     parameters = argparse.ArgumentParser()
     parameters.add_argument('--tf', type=str, default='train')  # 'train' or 'test'
-    parameters.add_argument('--data', type=str, default='DC2')  #'DC2' or 'DC3'
+    parameters.add_argument('--data', type=str, default='DC2')  #'DC2'
     args = parameters.parse_args()
     
     print(args)
